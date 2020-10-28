@@ -1,0 +1,72 @@
+.body{
+  overflow-x: hidden;
+}
+
+.navbar{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  background-color: #081c4a!important;
+}
+
+.navbar-brand img{
+  height: 2rem;
+}
+
+.navbar-nav li{
+  padding-right: .7rem;
+}
+
+.navbar .navbar-nav .nav-link{
+  padding-top: .8rem;
+  color: white;
+}
+
+.navbar .navbar-nav .nav-link:hover{
+  color: #eda702;
+}
+
+.bg-1{
+  background-image: url('img/bg-web.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.bg-2{
+  background-color: white;
+  color: #081c4a;
+}
+
+.bg-3{
+  background-color: #081c4a;
+}
+
+.bg-3 h1{
+  padding-bottom: 0.7rem;
+  border-bottom: 3px solid white;
+}
+
+.landing{
+  color: #081c4a;
+  padding: 0;
+  padding-top: 20vh;
+  border-bottom: 3px solid #081c4a;
+}
+
+.landing h1{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: .1rem;
+}
+
+.btn-home:hover{
+  color: #eda702;
+}
+
+.btn-home{
+  background-color: #081c4a;
+  color: white;
+}
