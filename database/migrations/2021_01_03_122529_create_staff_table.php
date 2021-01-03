@@ -18,7 +18,7 @@ class CreateStaffTable extends Migration
             $table->foreignId('staff_division_id');
             $table->string('identity_number');
             $table->string('name');
-            $table->description('photo_path');
+            $table->text('photo_path');
             $table->dateTime('start_period');
             $table->dateTime('end_period');
             $table->timestamps();
