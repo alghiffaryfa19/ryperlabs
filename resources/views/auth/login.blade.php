@@ -34,6 +34,7 @@
                 </div>
                 @error('username')
                 <div class="invalid-feedback">{{ $message }}</div>
+                <div class="valid-feedback text-danger">{{ $message }}</div>
                 @enderror
             </div>
         </div>
