@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -53,8 +51,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'identity_number' => ['required', 'numeric','digits_between:12,12','unique:students,nim'],
+            'username' => ['required', 'alpha_dash', 'min:5','unique:users,username'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'integer', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -63,27 +62,19 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-
-        if (Str::substr($data['username'], 2, 2) != 24) {
-            return "Maaf";
-        }
-        else
-        {
-            $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'username' => $data['username'],
-                'password' => Hash::make($data['password']),
-            ]);
-
-            return $user;   
-        }
-    
-        
-
+        $user = User::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        $student = $user->student()->create([
+            'nim' => $data['identity_number']
+        ]);
+        return $user;
     }
 }

@@ -1,66 +1,69 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layouts.authentication')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('rpl/login_style.css')}}">
+@section('content')
+<div class="card card-body">
+    <a href="" class="btn btn-light btn-block">
+        <span class="mr-2">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 48 48" class="abcRioButtonSvg">
+                <g>
+                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                    <path fill="none" d="M0 0h48v48H0z"></path>
+                </g>
+            </svg>
+        </span>
+        Continue with Google
+    </a>
 
-    <title>Login - RyperLabs</title>
-  </head>
-  <body>
-    <div class="container-fluid login-warp">
-      <!-- header box -->
-      <div class="row justify-content-center">
-        <div class="header-box col-10 col-sm-9 col-md-7">
-          <div class="row no-gutters">
-            <img src="img/LOGO RPL HIGH RES.png" class="logo" alt="">
-            <h1 class="logo-text col-8">RYPER LAB</h1>
-          </div>
-        </div>
-      </div>
-      <!-- end header box -->
-      <!-- login box -->
-      <div class="row justify-content-center">
-        <div class="login-box col-10 col-sm-9 col-md-7">
-          <h1>LOGIN</h1>
-          <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <div class="form-group">
-              <label for="inputUsername">Email atau NIM</label>
-              <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required  autofocus>
-                           
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-            </div>
-            <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-            </div>
-            <button type="submit" class="btn btn-outline-light btn-masuk">Masuk</button>
-            <small>Belum punya akun? <a href="{{route('daftar')}}">Daftar disini</a></small>
-          </form>
-        </div>
-      </div>
-      <!-- end login box -->
+    <div class="page-separator">
+        <div class="page-separator__text">or</div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+    <form method="POST" action="{{ route('login') }}" novalidate>
+        @csrf
+        <div class="form-group @error('username') was-validated @enderror">
+            <label class="text-label" for="email_2">Email Address or Username :</label>
+            <div class="input-group input-group-merge">
+                <input id="email_2" type="text" name="username" required="" class="form-control form-control-prepended" placeholder="john@doe.com" value="{{ old('username') }}">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <span class="far fa-envelope"></span>
+                    </div>
+                </div>
+                @error('username')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group @error('password') was-validated @enderror">
+            <label class="text-label" for="password_2">Password:</label>
+            <div class="input-group input-group-merge">
+                <input id="password_2" type="password" name="password" required="" class="form-control form-control-prepended" placeholder="Enter your password">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <span class="fa fa-key"></span>
+                    </div>
+                </div>
+                @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group mb-1">
+            <button class="btn btn-block btn-primary" type="submit">Login</button>
+        </div>
+        <div class="form-group text-center">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" checked="" id="remember">
+                <label class="custom-control-label" for="remember">Remember me</label>
+            </div>
+        </div>
+        <div class="form-group text-center mb-0">
+            <a href="{{ route('password.request') }}">Forgot password?</a> <br>
+            Don't have an account? <a class="text-underline" href="{{ route('register') }}">Sign up</a>
+        </div>
+    </form>
+</div>
+@endsection

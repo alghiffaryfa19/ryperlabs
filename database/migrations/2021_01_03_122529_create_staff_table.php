@@ -15,10 +15,11 @@ class CreateStaffTable extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('staff_division_id');
             $table->string('identity_number');
             $table->string('name');
-            $table->text('photo_path');
+            $table->text('photo_path')->nullable();
             $table->dateTime('start_period');
             $table->dateTime('end_period');
             $table->timestamps();

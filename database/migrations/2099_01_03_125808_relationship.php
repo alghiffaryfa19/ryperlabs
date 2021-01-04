@@ -26,6 +26,11 @@ class Relationship extends Migration
                   ->onDelete('restrict');
         });
         Schema::table('staff', function (Blueprint $table) {
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('restrict');
             $table->foreign('staff_division_id')
                   ->references('id')
                   ->on('staff_divisions')
