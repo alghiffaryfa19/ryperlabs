@@ -1,4 +1,5 @@
 @extends('layouts.authentication')
+@section('title', 'Register Account')
 @section('content')
 <div class="card card-body">
     <div class="alert alert-soft-info d-flex" role="alert">
@@ -18,6 +19,7 @@
                 </div>
                 @error('email')
                 <div class="invalid-feedback">{{ $message }}</div>
+                <div class="valid-feedback text-danger">{{ $message }}</div>
                 @enderror
             </div>
         </div>
@@ -32,6 +34,7 @@
                 </div>
                 @error('username')
                 <div class="invalid-feedback">{{ $message }}</div>
+                <div class="valid-feedback text-danger">{{ $message }}</div>
                 @enderror
             </div>
         </div>
@@ -46,6 +49,7 @@
                 </div>
                 @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
+                <div class="valid-feedback text-danger">{{ $message }}</div>
                 @enderror
             </div>
         </div>
@@ -60,6 +64,7 @@
                 </div>
                 @error('identity_number')
                 <div class="invalid-feedback">{{ $message }}</div>
+                <div class="valid-feedback text-danger">{{ $message }}</div>
                 @enderror
             </div>
         </div>
